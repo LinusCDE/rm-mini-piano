@@ -259,7 +259,7 @@ fn handle_input(
 
 fn to_note_key(mode_index: u8, opts: &Opts, key_name: &str) -> Result<u8, String> {
     let keys = vec![
-        "w1", "b1", "w2", "b2", "w3", "w4", "b3", "w5", "b4", "w6", "b5", "w7",
+        "w1", "b1", "w2", "b2", "w3", "w4", "b3", "w5", "b4", "w6", "b5", "w7", "w8",
     ];
     if !keys.contains(&key_name) {
         return Err(format!("Unknown key_name: {}", key_name));

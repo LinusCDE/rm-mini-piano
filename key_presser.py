@@ -18,6 +18,7 @@ KEYMAP_COMBINATIONS.append({
     'w6': ['6'],
     'b5': [Key.shift, '6'],
     'w7': ['7'],
+    'w8': ['8'],
 })
 
 KEYMAP_COMBINATIONS.append({
@@ -33,6 +34,7 @@ KEYMAP_COMBINATIONS.append({
     'w6': ['e'],
     'b5': [Key.shift, 'e'],
     'w7': ['r'],
+    'w8': ['t'],
 })
 
 KEYMAP_COMBINATIONS.append({
@@ -48,6 +50,7 @@ KEYMAP_COMBINATIONS.append({
     'w6': ['p'],
     'b5': [Key.shift, 'p'],
     'w7': ['a'],
+    'w8': ['s'],
 })
 
 KEYMAP_COMBINATIONS.append({
@@ -63,6 +66,7 @@ KEYMAP_COMBINATIONS.append({
     'w6': ['j'],
     'b5': [Key.shift, 'j'],
     'w7': ['k'],
+    'w8': ['l'],
 })
 
 KEYMAP_COMBINATIONS.append({
@@ -78,6 +82,7 @@ KEYMAP_COMBINATIONS.append({
     'w6': ['b'],
     'b5': [Key.shift, 'b'],
     'w7': ['n'],
+    'w8': ['m'],
 })
 
 # Current

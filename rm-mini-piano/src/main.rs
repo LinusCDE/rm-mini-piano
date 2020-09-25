@@ -61,6 +61,7 @@ fn main() {
     let mut w5 = Key::new("w5", W_W * 4, BASE_Y, W_W, W_H, false);
     let mut w6 = Key::new("w6", W_W * 5, BASE_Y, W_W, W_H, false);
     let mut w7 = Key::new("w7", W_W * 6, BASE_Y, W_W, W_H, false);
+    let mut w8 = Key::new("w8", W_W * 7, BASE_Y, W_W, W_H, false); // Technicially the next w1. But seems to be used this way
 
     // Black keys in order
     let mut b1 = Key::new("b1", W_W * 1 - B_W / 2, BASE_Y, B_W, B_H, true);
@@ -70,7 +71,7 @@ fn main() {
     let mut b5 = Key::new("b5", W_W * 6 - B_W / 2, BASE_Y, B_W, B_H, true);
 
     let mut keys = vec![
-        m1, m2, m3, m4, m5, w1, w2, w3, w4, w5, w6, w7, b1, b2, b3, b4, b5,
+        m1, m2, m3, m4, m5, w1, w2, w3, w4, w5, w6, w7, w8, b1, b2, b3, b4, b5,
     ];
 
     canvas.clear();
