@@ -44,34 +44,37 @@ fn main() {
     const W_H: u32 = 1054;
     const B_W: u32 = 115;
     const B_H: u32 = 631;
-    const M_S: u32 = 200;
+    const M_W: u32 = 200;
+    const M_H: u32 = 150;
 
     // Map/Octave selection
-    let mut m1 = Key::new("m1", 1872 - M_S * 5, 0, M_S, M_S, false);
-    let mut m2 = Key::new("m2", 1872 - M_S * 4, 0, M_S, M_S, false);
-    let mut m3 = Key::new("m3", 1872 - M_S * 3, 0, M_S, M_S, false);
-    let mut m4 = Key::new("m4", 1872 - M_S * 2, 0, M_S, M_S, false);
-    let mut m5 = Key::new("m5", 1872 - M_S * 1, 0, M_S, M_S, false);
+    let m1 = Key::new("m1", 1872 - M_W * 8, 0, M_W, M_H, false);
+    let m2 = Key::new("m2", 1872 - M_W * 7, 0, M_W, M_H, false);
+    let m3 = Key::new("m3", 1872 - M_W * 6, 0, M_W, M_H, false);
+    let m4 = Key::new("m4", 1872 - M_W * 5, 0, M_W, M_H, false);
+    let m5 = Key::new("m5", 1872 - M_W * 4, 0, M_W, M_H, false);
+    let m6 = Key::new("m6", 1872 - M_W * 3, 0, M_W, M_H, false);
+    let m7 = Key::new("m7", 1872 - M_W * 2, 0, M_W, M_H, false);
 
     // White keys in order
-    let mut w1 = Key::new("w1", W_W * 0, BASE_Y, W_W, W_H, false);
-    let mut w2 = Key::new("w2", W_W * 1, BASE_Y, W_W, W_H, false);
-    let mut w3 = Key::new("w3", W_W * 2, BASE_Y, W_W, W_H, false);
-    let mut w4 = Key::new("w4", W_W * 3, BASE_Y, W_W, W_H, false);
-    let mut w5 = Key::new("w5", W_W * 4, BASE_Y, W_W, W_H, false);
-    let mut w6 = Key::new("w6", W_W * 5, BASE_Y, W_W, W_H, false);
-    let mut w7 = Key::new("w7", W_W * 6, BASE_Y, W_W, W_H, false);
-    let mut w8 = Key::new("w8", W_W * 7, BASE_Y, W_W, W_H, false); // Technicially the next w1. But seems to be used this way
+    let w1 = Key::new("w1", W_W * 0, BASE_Y, W_W, W_H, false);
+    let w2 = Key::new("w2", W_W * 1, BASE_Y, W_W, W_H, false);
+    let w3 = Key::new("w3", W_W * 2, BASE_Y, W_W, W_H, false);
+    let w4 = Key::new("w4", W_W * 3, BASE_Y, W_W, W_H, false);
+    let w5 = Key::new("w5", W_W * 4, BASE_Y, W_W, W_H, false);
+    let w6 = Key::new("w6", W_W * 5, BASE_Y, W_W, W_H, false);
+    let w7 = Key::new("w7", W_W * 6, BASE_Y, W_W, W_H, false);
+    let w8 = Key::new("w8", W_W * 7, BASE_Y, W_W, W_H, false); // Technicially the next w1. But seems to be used this way
 
     // Black keys in order
-    let mut b1 = Key::new("b1", W_W * 1 - B_W / 2, BASE_Y, B_W, B_H, true);
-    let mut b2 = Key::new("b2", W_W * 2 - B_W / 2, BASE_Y, B_W, B_H, true);
-    let mut b3 = Key::new("b3", W_W * 4 - B_W / 2, BASE_Y, B_W, B_H, true);
-    let mut b4 = Key::new("b4", W_W * 5 - B_W / 2, BASE_Y, B_W, B_H, true);
-    let mut b5 = Key::new("b5", W_W * 6 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b1 = Key::new("b1", W_W * 1 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b2 = Key::new("b2", W_W * 2 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b3 = Key::new("b3", W_W * 4 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b4 = Key::new("b4", W_W * 5 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b5 = Key::new("b5", W_W * 6 - B_W / 2, BASE_Y, B_W, B_H, true);
 
     let mut keys = vec![
-        m1, m2, m3, m4, m5, w1, w2, w3, w4, w5, w6, w7, w8, b1, b2, b3, b4, b5,
+        m1, m2, m3, m4, m5, m6, m7, w1, w2, w3, w4, w5, w6, w7, w8, b1, b2, b3, b4, b5,
     ];
 
     canvas.clear();

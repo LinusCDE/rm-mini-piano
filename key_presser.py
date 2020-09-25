@@ -112,6 +112,10 @@ def handleKeyName(key_name: str, pressed: bool):
 
 
     for index in KEYMAP_COMBINATION_INDICES:
+        if index >= len(KEYMAP_COMBINATIONS):
+            print('Mode %d is not supported in this script' % (index+1), file=stderr)
+            continue
+
         if key_name not in KEYMAP_COMBINATIONS[index]:
             print('Unknown key_name (%s)!' % key_name, file=stderr)
             continue
