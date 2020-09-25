@@ -48,13 +48,13 @@ fn main() {
     const M_H: u32 = 150;
 
     // Map/Octave selection
-    let m1 = Key::new("m1", 1872 - M_W * 8, 0, M_W, M_H, false);
-    let m2 = Key::new("m2", 1872 - M_W * 7, 0, M_W, M_H, false);
-    let m3 = Key::new("m3", 1872 - M_W * 6, 0, M_W, M_H, false);
-    let m4 = Key::new("m4", 1872 - M_W * 5, 0, M_W, M_H, false);
-    let m5 = Key::new("m5", 1872 - M_W * 4, 0, M_W, M_H, false);
-    let m6 = Key::new("m6", 1872 - M_W * 3, 0, M_W, M_H, false);
-    let m7 = Key::new("m7", 1872 - M_W * 2, 0, M_W, M_H, false);
+    let m1 = Key::new("m1", 1872 - M_W * 7, 0, M_W, M_H, false);
+    let m2 = Key::new("m2", 1872 - M_W * 6, 0, M_W, M_H, false);
+    let m3 = Key::new("m3", 1872 - M_W * 5, 0, M_W, M_H, false);
+    let m4 = Key::new("m4", 1872 - M_W * 4, 0, M_W, M_H, false);
+    let m5 = Key::new("m5", 1872 - M_W * 3, 0, M_W, M_H, false);
+    let m6 = Key::new("m6", 1872 - M_W * 2, 0, M_W, M_H, false);
+    let m7 = Key::new("m7", 1872 - M_W * 1, 0, M_W, M_H, false);
 
     // White keys in order
     let w1 = Key::new("w1", W_W * 0, BASE_Y, W_W, W_H, false);
