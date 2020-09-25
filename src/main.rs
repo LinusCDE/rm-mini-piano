@@ -35,7 +35,7 @@ fn main() {
     let mut canvas = Canvas::new();
 
     let (input_tx, input_rx) = std::sync::mpsc::channel::<InputEvent>();
-    EvDevContext::new(InputDevice::GPIO, input_tx.clone()).start();
+    //EvDevContext::new(InputDevice::GPIO, input_tx.clone()).start();
     EvDevContext::new(InputDevice::Multitouch, input_tx).start();
     //EvDevContext::new(InputDevice::Wacom, input_tx.clone()).start();
 

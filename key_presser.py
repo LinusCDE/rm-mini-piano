@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
 from pynput.keyboard import Key, Controller
-from select import select
-import socket
 from sys import stderr
-from time import sleep
-from traceback import print_exc
 
 KEYMAP_COMBINATIONS = list()
 
