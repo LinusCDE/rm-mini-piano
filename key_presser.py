@@ -7,7 +7,9 @@ from sys import stderr
 from time import sleep
 from traceback import print_exc
 
-KEYMAP_COMBINATIONS_1 = {
+KEYMAP_COMBINATIONS = list()
+
+KEYMAP_COMBINATIONS.append({
     'w1': ['1'],
     'b1': [Key.shift, '1'],
     'w2': ['2'],
@@ -20,9 +22,9 @@ KEYMAP_COMBINATIONS_1 = {
     'w6': ['6'],
     'b5': [Key.shift, '6'],
     'w7': ['7'],
-}
+})
 
-KEYMAP_COMBINATIONS_2 = {
+KEYMAP_COMBINATIONS.append({
     'w1': ['8'],
     'b1': [Key.shift, '8'],
     'w2': ['9'],
@@ -35,9 +37,9 @@ KEYMAP_COMBINATIONS_2 = {
     'w6': ['e'],
     'b5': [Key.shift, 'e'],
     'w7': ['r'],
-}
+})
 
-KEYMAP_COMBINATIONS_3 = {
+KEYMAP_COMBINATIONS.append({
     'w1': ['t'],
     'b1': [Key.shift, 't'],
     'w2': ['y'],
@@ -50,9 +52,9 @@ KEYMAP_COMBINATIONS_3 = {
     'w6': ['p'],
     'b5': [Key.shift, 'p'],
     'w7': ['a'],
-}
+})
 
-KEYMAP_COMBINATIONS_4 = {
+KEYMAP_COMBINATIONS.append({
     'w1': ['s'],
     'b1': [Key.shift, 's'],
     'w2': ['d'],
@@ -65,9 +67,9 @@ KEYMAP_COMBINATIONS_4 = {
     'w6': ['j'],
     'b5': [Key.shift, 'j'],
     'w7': ['k'],
-}
+})
 
-KEYMAP_COMBINATIONS_5 = {
+KEYMAP_COMBINATIONS.append({
     'w1': ['l'],
     'b1': [Key.shift, 'l'],
     'w2': ['z'],
@@ -80,52 +82,47 @@ KEYMAP_COMBINATIONS_5 = {
     'w6': ['b'],
     'b5': [Key.shift, 'b'],
     'w7': ['n'],
-}
+})
 
 # Current
-KEYMAP_COMBINATIONS = KEYMAP_COMBINATIONS_3
+KEYMAP_COMBINATION_INDICES = {2}
+KEYMAP_COMBINATION_OVERWRITE_NEXT = True
 
 keyboard = Controller()
 
 
 def handleKeyName(key_name: str, pressed: bool):
-    global KEYMAP_COMBINATIONS
+    global KEYMAP_COMBINATION_INDICES
+    global KEYMAP_COMBINATION_OVERWRITE_NEXT
     # Mode check
-    if pressed and key_name.startswith('m'):
-        if key_name == 'm1':
-            KEYMAP_COMBINATIONS = KEYMAP_COMBINATIONS_1
-            print('Selected keymap 1')
-        elif key_name == 'm2':
-            KEYMAP_COMBINATIONS = KEYMAP_COMBINATIONS_2
-            print('Selected keymap 2')
-        elif key_name == 'm3':
-            KEYMAP_COMBINATIONS = KEYMAP_COMBINATIONS_3
-            print('Selected keymap 3')
-        elif key_name == 'm4':
-            KEYMAP_COMBINATIONS = KEYMAP_COMBINATIONS_4
-            print('Selected keymap 4')
-        elif key_name == 'm5':
-            KEYMAP_COMBINATIONS = KEYMAP_COMBINATIONS_5
-            print('Selected keymap 5')
+    if key_name.startswith('m'):
+        index = int(key_name[1:]) - 1
+        if pressed:
+            if KEYMAP_COMBINATION_OVERWRITE_NEXT:
+                KEYMAP_COMBINATION_INDICES = {index}
+                KEYMAP_COMBINATION_OVERWRITE_NEXT = False
+            else:
+                KEYMAP_COMBINATION_INDICES.add(index)
+        elif len(KEYMAP_COMBINATION_INDICES) > 1:
+            KEYMAP_COMBINATION_INDICES.remove(index)
+        elif len(KEYMAP_COMBINATION_INDICES) == 1:
+            KEYMAP_COMBINATION_OVERWRITE_NEXT = True
+        return
+
+
+    for index in KEYMAP_COMBINATION_INDICES:
+        if key_name not in KEYMAP_COMBINATIONS[index]:
+            print('Unknown key_name (%s)!' % key_name, file=stderr)
+            continue
+
+        keys = KEYMAP_COMBINATIONS[index][key_name]
+
+        if pressed:
+            for key in keys:
+                keyboard.press(key)
         else:
-            print('Unknown mode: %s' % key_name, file=stderr)
-        return
-    elif key_name.startswith('m'):
-        return
-
-
-    if key_name not in KEYMAP_COMBINATIONS:
-        print('Unknown key_name (%s)!' % key_name, file=stderr)
-        return
-
-    keys = KEYMAP_COMBINATIONS[key_name]
-
-    if pressed:
-        for key in keys:
-            keyboard.press(key)
-    else:
-        for key in keys[::-1]:
-            keyboard.release(key)
+            for key in keys[::-1]:
+                keyboard.release(key)
 
 while True:
     line = input()
