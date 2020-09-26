@@ -19,15 +19,24 @@ impl Key {
     fn new(name: &'static str, x: u32, y: u32, w: u32, h: u32, is_black: bool) -> Self {
         Self {
             name,
-            bounds: mxcfb_rect {
-                left: 1404 - y - h,
-                top: x,
-                width: h,
-                height: w,
-            },
+            bounds: to_landscape(mxcfb_rect {
+                left: x,
+                top: y,
+                width: w,
+                height: h,
+            }),
             is_black,
             is_pressed: false,
         }
+    }
+}
+
+fn to_landscape(rect: mxcfb_rect) -> mxcfb_rect {
+    mxcfb_rect {
+        left: 1404 - rect.top - rect.height,
+        top: rect.left,
+        width: rect.height,
+        height: rect.width,
     }
 }
 
@@ -73,11 +82,22 @@ fn main() {
     let b4 = Key::new("b4", W_W * 5 - B_W / 2, BASE_Y, B_W, B_H, true);
     let b5 = Key::new("b5", W_W * 6 - B_W / 2, BASE_Y, B_W, B_H, true);
 
+    //canvas.clear();
+    // Label keys with notes
+    canvas.draw_text_centered(
+        &to_landscape(mxcfb_rect {
+            left: w1.bounds.left,
+            top: 1404 - 100,
+            width: W_W,
+            height: 100,
+        }),
+        "C",
+        50.0,
+    );
+
     let mut keys = vec![
         m1, m2, m3, m4, m5, m6, m7, w1, w2, w3, w4, w5, w6, w7, w8, b1, b2, b3, b4, b5,
     ];
-
-    canvas.clear();
     draw_keys(&mut canvas, &keys);
     canvas.update_full();
 
