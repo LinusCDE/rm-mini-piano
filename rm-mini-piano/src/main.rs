@@ -48,11 +48,11 @@ fn main() {
     EvDevContext::new(InputDevice::Multitouch, input_tx).start();
     //EvDevContext::new(InputDevice::Wacom, input_tx.clone()).start();
 
-    const BASE_Y: u32 = 350;
-    const W_W: u32 = 213;
-    const W_H: u32 = 1054;
-    const B_W: u32 = 115;
-    const B_H: u32 = 631;
+    const W_W: u32 = /*213 / 2*/ 1872 / 15;
+    const W_H: u32 = 1054 / 2;
+    const BASE_Y: u32 = 1404 - W_H - 450;
+    const B_W: u32 = 115 / 2;
+    const B_H: u32 = 631 / 2;
     const M_W: u32 = 200;
     const M_H: u32 = 150;
 
@@ -73,7 +73,14 @@ fn main() {
     let w5 = Key::new("w5", W_W * 4, BASE_Y, W_W, W_H, false);
     let w6 = Key::new("w6", W_W * 5, BASE_Y, W_W, W_H, false);
     let w7 = Key::new("w7", W_W * 6, BASE_Y, W_W, W_H, false);
-    let w8 = Key::new("w8", W_W * 7, BASE_Y, W_W, W_H, false); // Technicially the next w1. But seems to be used this way
+    let w8 = Key::new("w8", W_W * 7, BASE_Y, W_W, W_H, false);
+    let w9 = Key::new("w9", W_W * 8, BASE_Y, W_W, W_H, false);
+    let w10 = Key::new("w10", W_W * 9, BASE_Y, W_W, W_H, false);
+    let w11 = Key::new("w11", W_W * 10, BASE_Y, W_W, W_H, false);
+    let w12 = Key::new("w12", W_W * 11, BASE_Y, W_W, W_H, false);
+    let w13 = Key::new("w13", W_W * 12, BASE_Y, W_W, W_H, false);
+    let w14 = Key::new("w14", W_W * 13, BASE_Y, W_W, W_H, false);
+    let w15 = Key::new("w15", W_W * 14, BASE_Y, W_W, W_H, false);
 
     // Black keys in order
     let b1 = Key::new("b1", W_W * 1 - B_W / 2, BASE_Y, B_W, B_H, true);
@@ -81,22 +88,17 @@ fn main() {
     let b3 = Key::new("b3", W_W * 4 - B_W / 2, BASE_Y, B_W, B_H, true);
     let b4 = Key::new("b4", W_W * 5 - B_W / 2, BASE_Y, B_W, B_H, true);
     let b5 = Key::new("b5", W_W * 6 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b6 = Key::new("b6", W_W * 8 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b7 = Key::new("b7", W_W * 9 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b8 = Key::new("b8", W_W * 11 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b9 = Key::new("b9", W_W * 12 - B_W / 2, BASE_Y, B_W, B_H, true);
+    let b10 = Key::new("b10", W_W * 13 - B_W / 2, BASE_Y, B_W, B_H, true);
 
     //canvas.clear();
     // Label keys with notes
-    canvas.draw_text_centered(
-        &to_landscape(mxcfb_rect {
-            left: w1.bounds.left,
-            top: 1404 - 100,
-            width: W_W,
-            height: 100,
-        }),
-        "C",
-        50.0,
-    );
-
     let mut keys = vec![
-        m1, m2, m3, m4, m5, m6, m7, w1, w2, w3, w4, w5, w6, w7, w8, b1, b2, b3, b4, b5,
+        m1, m2, m3, m4, m5, m6, m7, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w12, w13, w14,
+        w15, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10,
     ];
     draw_keys(&mut canvas, &keys);
     canvas.update_full();
